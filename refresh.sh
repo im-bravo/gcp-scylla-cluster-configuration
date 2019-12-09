@@ -1,6 +1,9 @@
 
-# sh refresh.sh your vm instance
-export SEEDS_IP_ADDRESS=`nslookup $1 | grep Address | tail -1 | cut -d:  -f2 | sed 's/^ *\| *$//'`
+# sh refresh.sh seed-instance1,2
+export SEEDS_IP_ADDRESS1=`nslookup $1 | grep Address | tail -1 | cut -d:  -f2 | sed 's/^ *\| *$//'`
+export SEEDS_IP_ADDRESS2=`nslookup $2 | grep Address | tail -1 | cut -d:  -f2 | sed 's/^ *\| *$//'`
+export SEEDS_IP_ADDRESS="$SEEDS_IP_ADDRESS1,$SEEDS_IP_ADDRESS2"
+
 export SELF_HOST_IP_ADDRESS=`/sbin/ip -o -4 addr list ens4 | awk '{print $4}' | cut -d/ -f1`
 export LISTEN_IP_ADDRESS=$SELF_HOST_IP_ADDRESS
 export RPC_IP_ADDRESS=$SELF_HOST_IP_ADDRESS
