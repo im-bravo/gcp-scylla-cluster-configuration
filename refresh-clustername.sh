@@ -19,7 +19,7 @@ diff scylla.edit.yaml scylla.yaml
 
 cp /etc/scylla/scylla.yaml ./scylla.yaml.backup
 sudo sh -c "cat scylla.yaml > /etc/scylla/scylla.yaml"
-sudo sh -c "echo cluster_name: '$3 >> /etc/scylla/scylla.yaml"
+sudo sh -c "echo cluster_name: '$3' >> /etc/scylla/scylla.yaml"
 
 
 sudo systemctl stop scylla-server
