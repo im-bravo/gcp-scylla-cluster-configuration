@@ -198,7 +198,7 @@ rpc_port: 9160
 api_port: 10000
 
 # IP for the REST API server
-api_address: 127.0.0.1
+api_address: API_IP_ADDRESS
 
 # Log WARN on any batch size exceeding this value. 5kb per batch by default.
 # Caution should be taken on increasing the size of this threshold as it can lead to node instability.
