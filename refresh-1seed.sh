@@ -18,6 +18,7 @@ sed -i "s/API_IP_ADDRESS/${API_IP_ADDRESS}/g" scylla.yaml
 
 cp /etc/scylla/scylla.yaml ./scylla.yaml.backup
 sudo sh -c "cat scylla.yaml > /etc/scylla/scylla.yaml"
+sudo sh -c "echo '' >> /etc/scylla/scylla.yaml"
 sudo sh -c "echo cluster_name: '$3' >> /etc/scylla/scylla.yaml"
 
 diff scylla.edit.yaml /etc/scylla/scylla.yaml
