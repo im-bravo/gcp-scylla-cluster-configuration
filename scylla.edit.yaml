@@ -810,3 +810,5 @@ commitlog_total_space_in_mb: -1
 murmur3_partitioner_ignore_msb_bits: 12
 api_ui_dir: /usr/lib/scylla/swagger-ui/dist/
 api_doc_dir: /usr/lib/scylla/api/api-doc/
+
+
