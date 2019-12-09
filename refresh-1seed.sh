@@ -14,11 +14,13 @@ sed -i "s/SEEDS_IP_ADDRESS/${SEEDS_IP_ADDRESS}/g" scylla.yaml
 sed -i "s/LISTEN_IP_ADDRESS/${LISTEN_IP_ADDRESS}/g" scylla.yaml
 sed -i "s/RPC_IP_ADDRESS/${RPC_IP_ADDRESS}/g" scylla.yaml
 sed -i "s/API_IP_ADDRESS/${API_IP_ADDRESS}/g" scylla.yaml
-diff scylla.edit.yaml scylla.yaml
+
 
 cp /etc/scylla/scylla.yaml ./scylla.yaml.backup
 sudo sh -c "cat scylla.yaml > /etc/scylla/scylla.yaml"
 sudo sh -c "echo cluster_name: '$3' >> /etc/scylla/scylla.yaml"
+
+diff scylla.edit.yaml /etc/scylla/scylla.yaml
 
 sudo systemctl stop scylla-server
 sudo systemctl start scylla-server
