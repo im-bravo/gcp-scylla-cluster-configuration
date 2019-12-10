@@ -28,16 +28,16 @@ create_scylla_yaml() {
     echo "param $2"
     echo "param $3"
     echo "param $4"
-    export L_SEEDS_IP_ADDRESS=$1
-    export L_LISTEN_IP_ADDRESS=$2
-    export L_RPC_IP_ADDRESS=$3
-    export L_API_IP_ADDRESS=$4
+    export L_SEEDS_IP_ADDRESS="$1"
+    export L_LISTEN_IP_ADDRESS="$2"
+    export L_RPC_IP_ADDRESS="$3"
+    export L_API_IP_ADDRESS="$4"
     # edit
     cp scylla.edit.yaml scylla.yaml
-    sed -i "s/L_SEEDS_IP_ADDRESS/${SEEDS_IP_ADDRESS}/g" scylla.yaml
-    sed -i "s/L_LISTEN_IP_ADDRESS/${LISTEN_IP_ADDRESS}/g" scylla.yaml
-    sed -i "s/L_RPC_IP_ADDRESS/${RPC_IP_ADDRESS}/g" scylla.yaml
-    sed -i "s/L_API_IP_ADDRESS/${API_IP_ADDRESS}/g" scylla.yaml
+    sed -i "s/SEEDS_IP_ADDRESS/${L_SEEDS_IP_ADDRESS}/g" scylla.yaml
+    sed -i "s/LISTEN_IP_ADDRESS/${L_LISTEN_IP_ADDRESS}/g" scylla.yaml
+    sed -i "s/RPC_IP_ADDRESS/${L_RPC_IP_ADDRESS}/g" scylla.yaml
+    sed -i "s/API_IP_ADDRESS/${L_API_IP_ADDRESS}/g" scylla.yaml
     sudo sh -c "echo cluster_name: '$CLUSTER_NAME' >> scylla.yaml"
     # diff
     diff scylla.edit.yaml scylla.yaml
@@ -82,14 +82,15 @@ create_scylla_yaml $SEEDS_IP_LIST $SELF_HOST_INTERNAL_IP $SELF_HOST_INTERNAL_IP 
 
 # check dc
 check_dc $SELF_HOST_INTERNAL_IP $DC1_NODE1_INTERNAL_IP $DC1_NODE2_INTERNAL_IP $DC1_NODE3_INTERNAL_IP
-export DC_IS_DC1=$?
+export DC_IS_DC1="$?"
 check_dc $SELF_HOST_INTERNAL_IP $DC2_NODE1_INTERNAL_IP $DC2_NODE2_INTERNAL_IP $DC2_NODE3_INTERNAL_IP
-export DC_IS_DC2=$?
+export DC_IS_DC2="$?"
 
-if $DC_IS_DC1 = 1; then
+if [ $DC_IS_DC1 = 1 ]; then
     export DC_NAME="SSDC1"
 fi
-if $DC_IS_DC2 = 1; then
+
+if [ $DC_IS_DC2 = 1 ]; then
     export DC_NAME="SSDC2"
 fi
 
