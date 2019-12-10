@@ -1,15 +1,17 @@
 # gcp-scylla-cluster-configuration
 
 # -- configuration
-# please set your host name
-# DC 1
+
 ```sh
+# DC 1
+# please set your host name
 export DC1_NODE1=xxx-01
 export DC1_NODE2=xxx-02
 export DC1_NODE3=xxx-03
 
 
 # DC 2
+# please set your host name
 export DC2_NODE1=xxx-01
 export DC2_NODE2=xxx-02
 export DC2_NODE3=xxx-03
