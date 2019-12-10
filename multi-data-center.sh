@@ -1,14 +1,14 @@
 #!/bin/bash
 # -- configuration
 # DC 1
-export DC1_NODE1=simba-db-usw1a-01
-export DC1_NODE2=simba-db-usw1a-02
-export DC1_NODE3=simba-db-usw1a-03
+# export DC1_NODE1=xxxx-01
+# export DC1_NODE2=xxxx-02
+# export DC1_NODE3=xxxx-03
 
 # DC 2
-export DC2_NODE1=simba-db-useast-01
-export DC2_NODE2=simba-db-useast-02
-export DC2_NODE3=simba-db-useast-03
+# export DC2_NODE1=yyyy-01
+# export DC2_NODE2=yyyy-02
+# export DC2_NODE3=yyyy-03
 
 # get internal IP address by instance name
 get_internal_ip_address() {
