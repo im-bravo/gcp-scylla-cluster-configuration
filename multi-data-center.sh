@@ -79,7 +79,7 @@ echo $SELF_HOST_INTERNAL_IP
 
 # create config file. "scylla.yaml"
 # create_scylla_yaml $SEEDS_IP_LIST $SELF_HOST_INTERNAL_IP $SELF_HOST_INTERNAL_IP $SELF_HOST_INTERNAL_IP
-create_scylla_yaml $SEEDS_IP_LIST 'localhost' 'localhost' $SELF_HOST_INTERNAL_IP
+create_scylla_yaml $SEEDS_IP_LIST 'localhost' $SELF_HOST_INTERNAL_IP $SELF_HOST_INTERNAL_IP
 
 # check dc
 check_dc $SELF_HOST_INTERNAL_IP $DC1_NODE1_INTERNAL_IP $DC1_NODE2_INTERNAL_IP $DC1_NODE3_INTERNAL_IP
