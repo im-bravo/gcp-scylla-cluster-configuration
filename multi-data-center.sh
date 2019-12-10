@@ -12,8 +12,13 @@
 
 # get internal IP address by instance name
 get_internal_ip_address() {
-    echo `nslookup $1 | grep Address | tail -1 | cut -d:  -f2 | sed 's/^ *\| *$//'`
+    nslookup $1 | grep Address | tail -1 | cut -d:  -f2 | sed 's/^ *\| *$//'
 }
+
+my_internal_ip_address() {
+    /sbin/ip -o -4 addr list ens4 | awk '{print $4}' | cut -d/ -f1
+}
+
 
 # create scylla yaml file
 create_scylla_yaml() {
@@ -40,8 +45,9 @@ export DC2_NODE3_INTERNAL_IP=`get_internal_ip_address $DC2_NODE3`
 
 
 export SEEDS_IP_LIST="$DC1_NODE1_INTERNAL_IP,$DC1_NODE2_INTERNAL_IP,$DC2_NODE1_INTERNAL_IP,$DC2_NODE2_INTERNAL_IP"
-
+export SELF_HOST_INTERNAL_IP=`my_internal_ip_address`
 echo $SEEDS_IP_LIST
+echo $SELF_HOST_INTERNAL_IP
 
 # 
 # sudo sh -c "echo 'dc=simba-scylla-dc2' >> /etc/scylla/cassandra-rackdc.properties"
