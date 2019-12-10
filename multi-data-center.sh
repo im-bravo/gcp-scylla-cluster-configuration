@@ -24,6 +24,10 @@ my_internal_ip_address() {
 # create scylla yaml file
 create_scylla_yaml() {
     # 
+    echo "param $1"
+    echo "param $2"
+    echo "param $3"
+    echo "param $4"
     export L_SEEDS_IP_ADDRESS=$1
     export L_LISTEN_IP_ADDRESS=$2
     export L_RPC_IP_ADDRESS=$3
@@ -40,6 +44,11 @@ create_scylla_yaml() {
 }
 
 check_dc() {
+    # 
+    echo "param $1"
+    echo "param $2"
+    echo "param $3"
+    echo "param $4"
     if $1 -eq $2 ; then
         return 1
     fi
