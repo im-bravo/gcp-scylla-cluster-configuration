@@ -469,7 +469,7 @@ commitlog_total_space_in_mb: -1
 # Whether to start the native transport server.
 # Please note that the address on which the native transport is bound is the
 # same as the rpc_address. The port however is different and specified below.
-# start_native_transport: true
+start_native_transport: true
 
 # The maximum threads for handling requests when the native transport is used.
 # This is similar to rpc_max_threads though the default differs slightly (and
