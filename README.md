@@ -3,9 +3,11 @@
 # -- configuration
 # please set your host name
 # DC 1
+```sh
 export DC1_NODE1=xxx-01
 export DC1_NODE2=xxx-02
 export DC1_NODE3=xxx-03
+
 
 # DC 2
 export DC2_NODE1=xxx-01
@@ -23,3 +25,4 @@ sh update.sh
 sudo systemctl stop scylla-server
 sudo systemctl start scylla-server
 sudo systemctl status scylla-server
+```
