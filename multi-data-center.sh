@@ -49,13 +49,13 @@ check_dc() {
     echo "param $2"
     echo "param $3"
     echo "param $4"
-    if $1 -eq $2 ; then
+    if $1 -eq $2; then
         return 1
     fi
-    if $1 -eq $3 ; then
+    if $1 -eq $3; then
         return 1
     fi
-    if $1 -eq $4 ; then
+    if $1 -eq $4; then
         return 01
     fi
     return 0
