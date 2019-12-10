@@ -490,7 +490,7 @@ start_native_transport: true
 # native_transport_max_concurrent_connections_per_ip: -1
 
 # Whether to start the thrift rpc server.
-# start_rpc: true
+start_rpc: true
 
 # enable or disable keepalive on rpc/native connections
 # rpc_keepalive: true
