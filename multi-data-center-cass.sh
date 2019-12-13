@@ -25,7 +25,7 @@ my_internal_ip_address() {
 
 
 # create scylla yaml file
-create_scylla_yaml() {
+create_cass_yaml() {
     # 
     echo "param $1"
     echo "param $2"
@@ -36,14 +36,14 @@ create_scylla_yaml() {
     export L_RPC_IP_ADDRESS="$3"
     export L_API_IP_ADDRESS="$4"
     # edit
-    cp scylla.edit.yaml scylla.yaml
-    sed -i "s/SEEDS_IP_ADDRESS/${L_SEEDS_IP_ADDRESS}/g" scylla.yaml
-    sed -i "s/LISTEN_IP_ADDRESS/${L_LISTEN_IP_ADDRESS}/g" scylla.yaml
-    sed -i "s/RPC_IP_ADDRESS/${L_RPC_IP_ADDRESS}/g" scylla.yaml
-    sed -i "s/API_IP_ADDRESS/${L_API_IP_ADDRESS}/g" scylla.yaml
-    sudo sh -c "echo cluster_name: '$CLUSTER_NAME' >> scylla.yaml"
+    cp cassandra.edit.yaml cassandra.yaml
+    sed -i "s/SEEDS_IP_ADDRESS/${L_SEEDS_IP_ADDRESS}/g" cassandra.yaml
+    sed -i "s/LISTEN_IP_ADDRESS/${L_LISTEN_IP_ADDRESS}/g" cassandra.yaml
+    sed -i "s/RPC_IP_ADDRESS/${L_RPC_IP_ADDRESS}/g" cassandra.yaml
+    sed -i "s/API_IP_ADDRESS/${L_API_IP_ADDRESS}/g" cassandra.yaml
+    sudo sh -c "echo cluster_name: '$CLUSTER_NAME' >> cassandra.yaml"
     # diff
-    diff scylla.edit.yaml scylla.yaml
+    diff cassandra.edit.yaml cassandra.yaml
 }
 
 check_dc() {
@@ -80,10 +80,10 @@ export SELF_HOST_INTERNAL_IP=`my_internal_ip_address`
 echo $SEEDS_IP_LIST
 echo $SELF_HOST_INTERNAL_IP
 
-# create config file. "scylla.yaml"
-# seed listen rpc api
-# create_scylla_yaml $SEEDS_IP_LIST $SELF_HOST_INTERNAL_IP $SELF_HOST_INTERNAL_IP $SELF_HOST_INTERNAL_IP
-create_scylla_yaml $SEEDS_IP_LIST $SELF_HOST_INTERNAL_IP "0.0.0.0" $SELF_HOST_INTERNAL_IP
+# create config file. "cassandra.yaml"
+# seed | listen | rpc | api
+# create_cass_yaml $SEEDS_IP_LIST $SELF_HOST_INTERNAL_IP $SELF_HOST_INTERNAL_IP $SELF_HOST_INTERNAL_IP
+create_cass_yaml $SEEDS_IP_LIST $SELF_HOST_INTERNAL_IP "0.0.0.0" $SELF_HOST_INTERNAL_IP
 
 # check dc
 check_dc $SELF_HOST_INTERNAL_IP $DC1_NODE1_INTERNAL_IP $DC1_NODE2_INTERNAL_IP $DC1_NODE3_INTERNAL_IP
@@ -111,9 +111,6 @@ echo 'rack=RAK1' >> cassandra-rackdc.properties
 
 diff cassandra-rackdc.example.properties cassandra-rackdc.properties
 
-
-# cp /etc/scylla/scylla.yaml ./scylla.yaml.backup
-# sudo sh -c "cat scylla.yaml > /etc/scylla/scylla.yaml"
 
 
 
