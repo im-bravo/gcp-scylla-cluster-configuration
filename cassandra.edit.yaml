@@ -7,7 +7,7 @@
 
 # The name of the cluster. This is mainly used to prevent machines in
 # one logical cluster from joining another.
-cluster_name: 'simba-cassandra'
+# cluster_name: ''
 
 # This defines the number of tokens randomly assigned to this node on the ring
 # The more tokens, relative to other nodes, the larger the proportion of data
@@ -1257,4 +1257,5 @@ enable_materialized_views: true
 # Enables SASI index creation on this node.
 # SASI indexes are considered experimental and are not recommended for production use.
 enable_sasi_indexes: true
+
 
