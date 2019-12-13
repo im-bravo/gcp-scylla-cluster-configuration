@@ -7,7 +7,7 @@ sudo sh -c "cat cassandra-rackdc.properties > /etc/cassandra/cassandra-rackdc.pr
 # 
 sudo rm -rf /var/lib/cassandra/*
 #
-sudo systemctl start cassandra
+sudo systemctl restart cassandra
 #
 sudo systemctl status cassandra
 #
