@@ -8,6 +8,7 @@ sudo sh -c "cat cassandra-rackdc.properties > /etc/cassandra/cassandra-rackdc.pr
 sudo rm -rf /var/lib/cassandra/data/*
 sudo rm -rf /var/lib/cassandra/hints/*
 sudo rm -rf /var/lib/cassandra/commitlog/*
+sudo rm -rf /var/lib/cassandra/saved_caches/*
 
 #
 sudo systemctl restart cassandra
